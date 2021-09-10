@@ -14,6 +14,7 @@
     <modules>
         <module>common</module>
         <module>Board</module>
+        <module>Member</module>
     </modules>
 
 </project>

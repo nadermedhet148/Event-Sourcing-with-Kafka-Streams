@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="common" />
+        <module name="member" />
         <module name="board" />
       </profile>
     </annotationProcessing>
@@ -16,6 +17,7 @@
       <module name="common" target="10" />
       <module name="evennts" target="1.5" />
       <module name="event-processing" target="10" />
+      <module name="member" target="10" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">

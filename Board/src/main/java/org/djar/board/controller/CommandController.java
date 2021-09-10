@@ -17,14 +17,14 @@ import reactor.core.publisher.Mono;
 
 @RestController
 @RequestMapping(path = "/command", produces = MediaType.APPLICATION_JSON_VALUE)
-public class MatchCommandController {
+public class CommandController {
 
-    private static final Logger logger = LoggerFactory.getLogger(MatchCommandController.class);
+    private static final Logger logger = LoggerFactory.getLogger(CommandController.class);
 
     private final EventPublisher publisher;
     private final StateStoreRepository<Board> boardRepository;
 
-    public MatchCommandController(EventPublisher publisher,
+    public CommandController(EventPublisher publisher,
                                   StateStoreRepository<Board> boardRepository
                                   ) {
         this.publisher = publisher;
