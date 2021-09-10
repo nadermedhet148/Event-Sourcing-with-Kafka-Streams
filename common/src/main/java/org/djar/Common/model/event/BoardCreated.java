@@ -5,25 +5,20 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Objects;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CardCreated extends Event {
+public class BoardCreated extends Event {
 
 
-    public enum Type {
-        TASK, NOTE
-    }
-
-
-    private String cardId;
-    private String description;
     private String boardId;
-    private String memberId;
-    private Type type;
+    private String name;
+
+
 
 
     @Override

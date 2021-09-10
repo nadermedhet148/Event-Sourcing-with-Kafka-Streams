@@ -5,30 +5,24 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Objects;
-
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
-public class CardCreated extends Event {
+@NoArgsConstructor
+public class CardStatusChanged extends Event {
 
-
-    public enum Type {
-        TASK, NOTE
+    public enum Status {
+        PENDING, IN_PROCESS, COMPLETED
     }
 
 
     private String cardId;
-    private String description;
     private String boardId;
-    private String memberId;
-    private Type type;
+    private Status status;
 
 
     @Override
     public String getAggId() {
         return boardId;
     }
-
 }

@@ -2,6 +2,8 @@ package org.djar.Common.stream;
 
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
+import lombok.SneakyThrows;
 import org.apache.kafka.common.serialization.Serde;
 import org.apache.kafka.common.serialization.Serdes;
 import org.apache.kafka.common.utils.Bytes;
@@ -35,8 +37,9 @@ public class StreamsUtils {
     }
 
     public static <E extends Event, D> void addProcessor(Topology topology, Class<E> eventType,
-            EventProcessor<E, D> proc, String store) {
+                                                         EventProcessor<E, D> proc, String store) {
         String topic = Topics.eventTopicName(eventType);
+
         topology.addSource(eventType.getSimpleName() + "Source", Serdes.String().deserializer(),
                 new JsonPojoSerde<E>(eventType), topic)
                 .addProcessor(eventType.getSimpleName() + "Process",
@@ -60,7 +63,7 @@ public class StreamsUtils {
     @FunctionalInterface
     public interface EventProcessor<E extends Event, D> {
 
-        void process(String eventId, E event, KeyValueStore<String, D> store);
+        void process(String eventId, E event, KeyValueStore<String, D> store) throws Exception;
     }
 
     private static class ProcessorWrapper<E extends Event, D> extends AbstractProcessor<String, E> {
@@ -82,6 +85,7 @@ public class StreamsUtils {
             store = (KeyValueStore<String, D>)context.getStateStore(storeName);
         }
 
+        @SneakyThrows
         @Override
         public void process(String eventId, E event) {
             logger.debug("Event received from topic {}: {}->{}", topic, eventId, event);

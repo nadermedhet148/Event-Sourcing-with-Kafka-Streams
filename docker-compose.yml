@@ -7,6 +7,7 @@ services:
     image: wurstmeister/zookeeper
     container_name: zookeeper
 
+
   kafka:
     hostname: kafka
     ports:
@@ -16,26 +17,27 @@ services:
     environment:
       KAFKA_ADVERTISED_HOST_NAME: kafka
       KAFKA_ADVERTISED_PORT: 9092
-      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092
       KAFKA_CREATE_TOPICS: >
-        fb-event.match-scheduled:1:1,
-        fb-event.match-started:1:1,
-        fb-event.goal-scored:1:1,
-        fb-event.card-received:1:1,
-        fb-event.match-finished:1:1,
-        fb-event.player-started-career:1:1,
-        fb-view.match-score:1:1,
-        fb-view.team-ranking:1:1,
-        fb-view.player-goals:1:1,
-        fb-view.player-cards:1:1,
-        fb-view.top-players:1:1,
-        fb-connect.public.players:1:1
+        fb-event.card-created:1:1,
+        fb-event.card-created,
+        fb-event.board-created:1:1,
+        fb-event.board-created,
+        fb-event.card-status-changed:1:1,
+        fb-event.card-status-changed,
+#        fb-view.team-ranking:1:1,
+#        fb-view.player-goals:1:1,
+#        fb-view.player-cards:1:1,
+#        fb-view.top-players:1:1,
+#        fb-connect.public.players:1:1
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
       KAFKA_BROKER_ID: 999
     image: wurstmeister/kafka:1.1.0
     container_name: kafka
     links:
       - zookeeper
+    expose:
+      - "9092"
 
   postgres:
     image: debezium/example-postgres:latest
@@ -45,17 +47,19 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
+    expose:
+      - "5432"
 
-  connect:
-    image: debezium/connect:latest
-    container_name: connect
-    ports:
-     - 8083:8083
-    links:
-     - kafka
-     - postgres
-    environment:
-      BOOTSTRAP_SERVERS: kafka:9092
-      GROUP_ID: 1
-      CONFIG_STORAGE_TOPIC: fb.connect.configs
-      OFFSET_STORAGE_TOPIC: fb.connect.offsets
+#  connect:
+#    image: debezium/connect:latest
+#    container_name: connect
+#    ports:
+#     - 8083:8083
+#    links:
+#     - kafka
+#     - postgres
+#    environment:
+#      BOOTSTRAP_SERVERS: localhost:9092
+#      GROUP_ID: 1
+#      CONFIG_STORAGE_TOPIC: fb.connect.configs
+#      OFFSET_STORAGE_TOPIC: fb.connect.offsets

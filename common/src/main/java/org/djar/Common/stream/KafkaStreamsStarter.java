@@ -1,6 +1,5 @@
 package org.djar.Common.stream;
 
-import static org.djar.Common.util.Topics.TOPIC_NAME_PREFIX;
 
 import java.util.Properties;
 import java.util.Set;
@@ -17,12 +16,15 @@ import org.apache.kafka.streams.Topology;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import static org.djar.Common.util.Topics.TOPIC_NAME_PREFIX;
+
+
 public class KafkaStreamsStarter {
 
     private static final Logger logger = LoggerFactory.getLogger(KafkaStreamsStarter.class);
 
     // the number of football topics - docker-compose.yml/kafka/KAFKA_CREATE_TOPICS
-    private static final int FB_TOPIC_COUNT = 12;
+    private static final int FB_TOPIC_COUNT = 1;
 
     private final String kafkaBootstrapAddress;
     private final Topology topology;
@@ -83,10 +85,11 @@ public class KafkaStreamsStarter {
                 try {
                     topicNames = client.listTopics().names().get();
 
-                    if (containsFootballTopics(topicNames)) {
-                        logger.trace("Required topics exist: {}", topicNames);
-                        break;
-                    }
+                    break;
+
+//                    if (containsFootballTopics(topicNames)) {
+//                        logger.trace("Required topics exist: {}", topicNames);
+//                    }
                 } catch (ExecutionException e) {
                     // ignore retriable errors, especially timeouts
                     if (!(e.getCause() instanceof RetriableException)) {

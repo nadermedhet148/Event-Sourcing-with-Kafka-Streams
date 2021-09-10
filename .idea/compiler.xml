@@ -2,23 +2,26 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="football-common" />
+        <module name="common" />
+        <module name="board" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="football-common" target="10" />
-      <module name="football-match" target="10" />
-      <module name="football-parent" target="10" />
+      <module name="board" target="10" />
+      <module name="common" target="10" />
+      <module name="evennts" target="1.5" />
+      <module name="event-processing" target="10" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="football-common" options="-parameters" />
-      <module name="football-match" options="-parameters" />
+      <module name="board" options="" />
+      <module name="common" options="" />
     </option>
   </component>
 </project>

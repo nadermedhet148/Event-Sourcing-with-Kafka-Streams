@@ -1,6 +1,7 @@
 package org.djar.Common.stream;
 
 import java.util.UUID;
+
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.djar.Common.model.event.Event;
@@ -8,7 +9,9 @@ import org.djar.Common.model.event.EventMetadata;
 import org.djar.Common.util.Topics;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
+
 
 public class EventPublisher {
 

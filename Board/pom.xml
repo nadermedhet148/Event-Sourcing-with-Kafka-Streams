@@ -3,12 +3,12 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<artifactId>common</artifactId>
+	<artifactId>board</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-    
-	<name>common</name>
+	<name>board</name>
+	<groupId>org.djar</groupId>
 	<description>Demo project for Kafka Streams</description>
 
 	<parent>
@@ -18,13 +18,29 @@
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<dockerfile.maven.version>1.4.0</dockerfile.maven.version>
+	</properties>
+
 	<dependencies>
+
+		<dependency>
+			<groupId>org.djar</groupId>
+			<artifactId>common</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-parent -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-parent</artifactId>
 			<version>2.4.5</version>
 			<type>pom</type>
 		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.rocksdb/rocksdbjni -->
 		<dependency>
 			<groupId>org.rocksdb</groupId>
 			<artifactId>rocksdbjni</artifactId>
@@ -98,6 +114,12 @@
 			<version>5.3.1</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.eclipse.jetty.orbit/javax.servlet -->
+<!--		<dependency>-->
+<!--			<groupId>org.eclipse.jetty.orbit</groupId>-->
+<!--			<artifactId>javax.servlet</artifactId>-->
+<!--			<version>3.0.0.v201112011016</version>-->
+<!--		</dependency>-->
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -107,11 +129,34 @@
 
 	</dependencies>
 
-    	<build>
+	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>com.spotify</groupId>
+				<artifactId>dockerfile-maven-plugin</artifactId>
+                <version>${dockerfile.maven.version}</version>
+				<executions>
+					<execution>
+						<id>default</id>
+						<goals>
+							<goal>build</goal>
+						</goals>
+					</execution>
+				</executions>
+                <configuration>
+                    <repository>board</repository>
+                </configuration>
+				<dependencies>
+					<dependency>
+						<groupId>javax.activation</groupId>
+						<artifactId>activation</artifactId>
+						<version>1.1.1</version>
+					</dependency>
+				</dependencies>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -123,5 +168,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
 </project>
