@@ -1,4 +1,4 @@
-package org.djar.board.domain;
+package org.djar.board.Domain;
 
 import lombok.*;
 

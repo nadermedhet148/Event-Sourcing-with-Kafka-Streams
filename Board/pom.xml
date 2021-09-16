@@ -126,6 +126,12 @@
 			<version>2.5.4</version>
 
 		</dependency>
+		<dependency>
+			<groupId>org.djar</groupId>
+			<artifactId>member</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<scope>compile</scope>
+		</dependency>
 
 	</dependencies>
 

@@ -7,10 +7,10 @@ import org.djar.Common.model.event.CardCreated;
 import org.djar.Common.model.event.CardStatusChanged;
 import org.apache.kafka.streams.Topology;
 import org.apache.kafka.streams.state.KeyValueStore;
-import org.djar.board.domain.Board;
-import org.djar.board.domain.Card;
+import org.djar.board.Domain.Card;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.djar.board.Domain.Board;
 
 import java.util.Objects;
 

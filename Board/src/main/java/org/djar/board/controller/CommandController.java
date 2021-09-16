@@ -7,7 +7,7 @@ import org.djar.Common.model.event.CardStatusChanged;
 import org.djar.Common.model.event.Event;
 import org.djar.Common.repo.StateStoreRepository;
 import org.djar.Common.stream.EventPublisher;
-import org.djar.board.domain.Board;
+import org.djar.board.Domain.Board;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
