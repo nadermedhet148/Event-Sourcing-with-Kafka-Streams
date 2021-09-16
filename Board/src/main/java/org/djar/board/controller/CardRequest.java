@@ -15,5 +15,4 @@ public class CardRequest {
     private String memberId;
     private String type;
     private String description;
-    private String status;
 }

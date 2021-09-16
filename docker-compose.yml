@@ -30,6 +30,7 @@ services:
         fb-event.member-added-to-team:1:1,
         fb-event.member-added-to-team,
         fb-connect.teams.teams,
+        fb-view.card-summary:1:1,
 #        fb-view.team-ranking:1:1,
 #        fb-view.player-goals:1:1,
 #        fb-view.player-cards:1:1,
@@ -44,6 +45,18 @@ services:
     expose:
       - "9092"
 
+
+  ma:
+    image: provectuslabs/kafka-ui:latest
+    restart: always
+    ports:
+      - "9000:8080"
+    environment:
+      KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: "kafka:9092"
+      KAFKA_CLUSTERS_0_NAME: "local"
+      KAFKA_CLUSTERS_0_ZOOKEEPER: "zookeeper:2181"
+    links:
+      - kafka
   postgres:
     image: debezium/example-postgres:latest
     container_name: postgres

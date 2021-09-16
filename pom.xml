@@ -17,6 +17,7 @@
         <module>Member</module>
         <module>UI</module>
         <module>Board-view-basic</module>
+        <module>demo</module>
 
     </modules>
 
