@@ -1,4 +1,4 @@
-package org.djar.football.view.basic;
+package org.djar.basic;
 
 import static org.apache.kafka.common.serialization.Serdes.String;
 import org.apache.kafka.common.serialization.Serdes;
@@ -22,6 +22,7 @@ import org.djar.Common.stream.JsonPojoSerde;
 public class BoardSummariesBuilder {
 
     private static final String Card_Created_TOPIC = Topics.eventTopicName(CardCreated.class);
+    public static final String Card_Created_STORE = "card_created_store";
 
 
     private final JsonPojoSerde<CardCreated> cardCreatedSerde = new JsonPojoSerde<>(CardCreated.class);
@@ -44,7 +45,7 @@ public class BoardSummariesBuilder {
                 .groupByKey(Serialized.with(Serdes.String(), cardCreatedSerde))
                 .aggregate(() -> new CardSummary(),
                         (id, createdCard, cardSummary) -> cardSummary.aggregate(createdCard),
-                        materialized(Card_Created_TOPIC, cardSummarySerde));
+                        materialized(Card_Created_STORE, cardSummarySerde));
 
         CardSummaryTable.toStream().to(Card_Created_TOPIC, Produced.with(String(), cardSummarySerde));
     }

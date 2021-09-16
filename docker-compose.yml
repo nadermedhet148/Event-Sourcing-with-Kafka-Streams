@@ -55,16 +55,16 @@ services:
     expose:
       - "5432"
 
-  connect:
-    image: debezium/connect:latest
-    container_name: connect
-    ports:
-     - 8083:8083
-    links:
-     - kafka
-     - postgres
-    environment:
-      BOOTSTRAP_SERVERS: localhost:9092
-      GROUP_ID: 1
-      CONFIG_STORAGE_TOPIC: fb.connect.configs
-      OFFSET_STORAGE_TOPIC: fb.connect.offsets
+#  connect:
+#    image: debezium/connect:latest
+#    container_name: connect
+#    ports:
+#     - 8083:8083
+#    links:
+#     - kafka
+#     - postgres
+#    environment:
+#      BOOTSTRAP_SERVERS: localhost:9092
+#      GROUP_ID: 1
+#      CONFIG_STORAGE_TOPIC: fb.connect.configs
+#      OFFSET_STORAGE_TOPIC: fb.connect.offsets

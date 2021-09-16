@@ -1,4 +1,4 @@
-package org.djar.football.view.basic;
+package org.djar.basic;
 
 import org.apache.kafka.streams.KafkaStreams;
 import org.apache.kafka.streams.StreamsBuilder;

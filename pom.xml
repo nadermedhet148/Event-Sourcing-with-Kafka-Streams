@@ -15,6 +15,9 @@
         <module>common</module>
         <module>Board</module>
         <module>Member</module>
+        <module>UI</module>
+        <module>Board-view-basic</module>
+
     </modules>
 
 </project>

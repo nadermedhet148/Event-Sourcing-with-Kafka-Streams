@@ -10,6 +10,7 @@
         <module name="member" />
         <module name="board-view" />
         <module name="common" />
+        <module name="ui" />
         <module name="board" />
       </profile>
     </annotationProcessing>
@@ -20,6 +21,7 @@
       <module name="evennts" target="1.5" />
       <module name="event-processing" target="10" />
       <module name="member" target="10" />
+      <module name="ui" target="10" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
