@@ -1,4 +1,4 @@
-package org.djar.board.Domain;
+package org.djar.board.domain;
 
 
 import lombok.AllArgsConstructor;

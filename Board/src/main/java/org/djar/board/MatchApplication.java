@@ -14,7 +14,7 @@ import org.apache.kafka.common.serialization.StringSerializer;
 import org.apache.kafka.streams.KafkaStreams;
 import org.apache.kafka.streams.StreamsBuilder;
 import org.apache.kafka.streams.Topology;
-import org.djar.board.Domain.Board;
+import org.djar.board.domain.Board;
 import org.djar.board.snapshot.DomainUpdater;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
